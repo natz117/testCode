@@ -1,0 +1,9 @@
+ - How to approach when elevator opens on floor and user does not enter/press next button?  Put timer in place to unlock elevator from being unavailable
+ - How to approach users pressing buttons on multiple floors before all 
+   entries have been complete potentially using queue structure?
+ - how do we handle users pressing buttons inside the elevator 
+ - How do we handle users not entering elevator
+ - How do we handle users pressing floors above and below the current floor?
+ - How do we add a feature that sends the closest elevator to the most recent button pressed?  Discuss how we could loop through available elevators and keep track of the closest one. 
+ - How do we approach a user in an elevator that presses multiple buttons
+ - How do we approach when one elevator is broken
