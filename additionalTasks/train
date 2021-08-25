@@ -9,3 +9,60 @@ const arr = ['9:00', '9:40'];
 const dep[] = ['9:10', '12:00'];
 Output: 1 
 Explanation: Only one platform is needed. 
+
+
+
+
+
+
+
+
+Possible solution less than O n^2
+
+interface ArrayConstructor {
+  from<T, U>(
+    arrayLike: ArrayLike<T>,
+    mapfn: (v: T, k: number) => U,
+    thisArg?: any
+  ): Array<U>;
+  from<T>(arrayLike: ArrayLike<T>): Array<T>;
+}
+
+const arr = ["9:00", "9:40", "9:50", "11:00", "15:00", "18:00"];
+const dep = ["9:10", "12:00", "11:20", "11:30", "19:00", "20:00"];
+
+function findMin(a: string[], d: string[]) {
+  const arr = a.map((arrival) => {
+    return arrival.replace(":", "");
+  });
+  const dep = d.map((departure) => {
+    return departure.replace(":", "");
+  });
+
+  const ad = new Map();
+  arr.forEach((arrival) => {
+    ad.set(arrival, "a");
+  });
+  dep.forEach((departure) => {
+    if (ad.get(departure)) {
+      ad.set(departure, "ad");
+    } else {
+      ad.set(departure, "d");
+    }
+  });
+  const arrDep = Array.from(ad).map(([name, value]) => ({ name, value }));
+  const sortedArrDep = arrDep.sort((a, b) => a.name - b.name);
+  let totalPlatforms = 0;
+  let platformsInUse = 0;
+  sortedArrDep.forEach((event) => {
+    if (event.value === "a") platformsInUse++;
+    else if (event.value === "d") platformsInUse--;
+
+    if (platformsInUse > totalPlatforms) {
+      totalPlatforms = platformsInUse;
+    }
+  });
+  return totalPlatforms;
+}
+
+console.log(findMin(arr, dep));
