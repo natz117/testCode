@@ -17,7 +17,7 @@ Explanation: Only one platform is needed.
 
 
 
-Possible solution less than O n^2
+Possible solution with potential O(n log(n))
 
 interface ArrayConstructor {
   from<T, U>(
