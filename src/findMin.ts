@@ -6,3 +6,8 @@
  * if N is not divisible by d log the
  * string 'unable to find divisible number'
  */
+
+function a{
+
+return null;
+}
